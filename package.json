@@ -1,10 +1,9 @@
 {
   "name": "project",
-  "dependencies": {},
   "devDependencies": {
-    "webpack": "^2.0",
     "ts-loader": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "webpack": "^5.95.0"
   },
   "scripts": {
     "build": "webpack",
