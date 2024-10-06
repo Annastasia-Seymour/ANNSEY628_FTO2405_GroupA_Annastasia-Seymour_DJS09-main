@@ -2,7 +2,7 @@
   "name": "project",
   "devDependencies": {
     "ts-loader": "*",
-    "typescript": "*",
+    "typescript": "^5.6.2",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4"
   },
