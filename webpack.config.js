@@ -1,26 +1,23 @@
 module.exports = {
-  "output": {
-    "filename": "[name].pack.js"
+  mode: 'development', // Add this line to set the mode
+  entry: {
+    index: './index.ts' // Ensure this points to your TypeScript entry file
   },
-  "entry": {
-    "index": "./index"
+  output: {
+    filename: '[name].pack.js', // This should match the script tag in your HTML
+    path: __dirname + '/dist', // Specify output directory
   },
-  "resolve": {
-    "extensions": [
-      ".ts",
-      ".js",
-      ".json"
-    ]
+  resolve: {
+    extensions: ['.ts', '.js', '.json']
   },
-  "module": {
-    "rules": [
+  module: {
+    rules: [
       {
-        "use": {
-          "loader": "ts-loader"
-        },
-        "exclude": /node_modules/,
-        "test": /\.ts$/
+        test: /\.ts$/, // Apply this rule to .ts files
+        use: 'ts-loader',
+        exclude: /node_modules/
       }
     ]
   }
 };
+
