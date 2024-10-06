@@ -2,20 +2,22 @@
 // Write a function that will only accept numbers and attend to 
 // all TypeScript weakness flags.
 
-import { showReviewTotal, populateUser } from './utils'
-import { Permissions, LoyaltyUser } from './enums'
+// Literal Types
+// 1. Based on what we have learnt about literal types with the price, can you make
+// a Country literal type? You only have to include the countries we are dealing with in 
+// the project.
+// 2. Can you create a file and store all your types aliases in there?
+
+import { showReviewTotal, populateUser, showDetails } from './utils'
+import { Permissions , LoyaltyUser } from './enums.ts'
+import { Price, Country } from './types'
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
-let isOpen: boolean
+let isLoggedIn: boolean
 
 // Reviews
-const reviews : { 
-    name: string; 
-    stars: number; 
-    loyaltyUser: LoyaltyUser; 
-    date: string
-    }[] = [
+const reviews : any[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -32,12 +34,11 @@ const reviews : {
         name: 'Omar',
         stars: 4,
         loyaltyUser: LoyaltyUser.SILVER_USER,
-        date: '27-03-2021'
+        date: '27-03-2021',
+        description: 'Great hosts, location was a bit further than said.'
     },
 ]
 
-
-// User
 const you = {
     firstName: 'Bobby',
     lastName: 'Brown',
@@ -56,7 +57,7 @@ const properties : {
         firstLine: string;
         city: string;
         code: number;
-        country: string;
+        country: Country;
     };
     contact: [ number, string ];
     isAvailable: boolean;
@@ -102,7 +103,6 @@ const properties : {
     }
 ]
 
-
 // Functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
@@ -116,6 +116,7 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement('img')
     image.setAttribute('src', properties[i].image)
     card.appendChild(image)
+    showDetails(you.permissions, card, properties[i].price)
     propertyContainer.appendChild(card)
 }
 
