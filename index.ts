@@ -3,9 +3,10 @@
 // all TypeScript weakness flags.
 // : number
 document.addEventListener("DOMContentLoaded", () => {
-    const returningUserDisplay = document.querySelector('#returning-user') as HTMLElement | null;
-    const userNameDisplay = document.querySelector('#user') as HTMLElement | null;
-    const reviewTotalDisplay = document.querySelector('#reviews') as HTMLElement | null;
+    const returningUserDisplay = document.querySelector('#returning-user')
+const userNameDisplay = document.querySelector('#user')
+const reviewTotalDisplay = document.querySelector('#reviews')
+let isOpen: boolean
 
     const reviews = [
         {
@@ -30,28 +31,34 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
-        const iconDisplay = isLoyalty ? '⭐' : '';
-        if (reviewTotalDisplay) {
-            reviewTotalDisplay.innerHTML = 'Review total ' + value.toString() + '| last reviewed by ' + 
-            reviewer + ' ' + iconDisplay;
-        }
+        const iconDisplay = isLoyalty ? '⭐' : ''
+        reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
     }
-
-    showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
-
-    const you = {
-        userName: 'Bobby',
+    
+    showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+    
+    const you: {
+        firstName: string;
+        lastName: string;
+        isReturning: boolean;
+        age: number;
+    } = {
+        firstName: 'Bobby',
+        lastName: 'Brown',
         isReturning: true,
-    };
-
-    function populateUser(isReturning: boolean, userName: string) {
-        if (isReturning && returningUserDisplay) {
-            returningUserDisplay.innerHTML = 'Welcome back';
-        }
-        if (userNameDisplay) {
-            userNameDisplay.innerHTML = userName;
-        }
+        age: 35,
     }
+    
+    
+    function populateUser(isReturning : boolean, userName: string ) {
+        if (isReturning){
+            returningUserDisplay.innerHTML = 'back'
+        }
+        userNameDisplay.innerHTML = userName
+    }
+    
+    populateUser(you.isReturning, you.firstName)
+    
 
-    populateUser(you.isReturning, you.userName);
-});
+
+//sorry coach Josh if the file was enormous i had to sort an issue with the compiler(i think?)
